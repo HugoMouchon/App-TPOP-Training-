@@ -1,28 +1,35 @@
 {
   "expo": {
-    "name": "MonProjet",
-    "slug": "MonProjet",
+    "name": "TPOP Reco",
+    "slug": "TPOP Reco",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo/TPOP.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/logo/TPOP.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000"
+    },
+    "androidNavigationBar": {
+      "backgroundColor": "#fff7dd",
+      "barStyle": "light-content"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/logo/TPOP.png",
+        "backgroundColor": "black"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/logo/TPOP.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
