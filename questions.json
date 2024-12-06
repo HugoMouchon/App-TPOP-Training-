@@ -243,5 +243,121 @@
       "type": "trueFalse",
       "options": ["Vrai", "Faux"]
     }
+  ],
+
+"Thomas": [
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "ardoise.jpg",
+      "correctAnswer": "Pavé en ardoise",
+      "type": "multipleChoice",
+      "options": ["Pavé en ardoise", "Pavé en argile", "Pavé en granit"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "argile.jpg",
+      "correctAnswer": "Pavé en argile",
+      "type": "multipleChoice",
+      "options": ["Pavé en argile", "Pavé en béton drainant", "Pavé en porphyre"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "autoblocant.jpg",
+      "correctAnswer": "Pavé autobloquant",
+      "type": "multipleChoice",
+      "options": ["Pavé autobloquant", "Pavé écologique", "Pavé en terre cuite"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "beton_drainant.jpg",
+      "correctAnswer": "Pavé en béton drainant",
+      "type": "multipleChoice",
+      "options": ["Pavé en béton drainant", "Pavé en béton vieilli", "Pavé en pierre bleue"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "beton_presse.jpg",
+      "correctAnswer": "Pavé en béton pressé",
+      "type": "multipleChoice",
+      "options": ["Pavé en béton pressé", "Pavé en klinker", "Pavé en marbre noir"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "beton_vieilli.jpg",
+      "correctAnswer": "Pavé en béton vieilli",
+      "type": "multipleChoice",
+      "options": ["Pavé en béton vieilli", "Pavé en ardoise", "Pavé en verre"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "ecologique.jpg",
+      "correctAnswer": "Pavé écologique",
+      "type": "multipleChoice",
+      "options": ["Pavé écologique", "Pavé autobloquant", "Pavé en pierre calcaire"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "granit.jpg",
+      "correctAnswer": "Pavé en granit",
+      "type": "multipleChoice",
+      "options": ["Pavé en granit", "Pavé en klinker", "Pavé mosaïque"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "klinker.jpg",
+      "correctAnswer": "Pavé en klinker",
+      "type": "multipleChoice",
+      "options": ["Pavé en klinker", "Pavé en porphyre", "Pavé en terre cuite"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "marbre_noir.jpg",
+      "correctAnswer": "Pavé en marbre noir",
+      "type": "multipleChoice",
+      "options": ["Pavé en marbre noir", "Pavé en pierre bleue", "Pavé en pierre calcaire"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "mosaique.jpg",
+      "correctAnswer": "Pavé mosaïque",
+      "type": "multipleChoice",
+      "options": ["Pavé mosaïque", "Pavé en granit", "Pavé en ardoise"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "pierre_bleue.jpg",
+      "correctAnswer": "Pavé en pierre bleue",
+      "type": "multipleChoice",
+      "options": ["Pavé en pierre bleue", "Pavé en klinker", "Pavé en béton pressé"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "pierre_calcaire.jpg",
+      "correctAnswer": "Pavé en pierre calcaire",
+      "type": "multipleChoice",
+      "options": ["Pavé en pierre calcaire", "Pavé en béton drainant", "Pavé en marbre noir"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "porphyre.jpg",
+      "correctAnswer": "Pavé en porphyre",
+      "type": "multipleChoice",
+      "options": ["Pavé en porphyre", "Pavé mosaïque", "Pavé en ardoise"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "terre_cuite.jpg",
+      "correctAnswer": "Pavé en terre cuite",
+      "type": "multipleChoice",
+      "options": ["Pavé en terre cuite", "Pavé écologique", "Pavé en klinker"]
+    },
+    {
+      "question": "Quel est le nom de ce pavé ?",
+      "photo": "verre.jpg",
+      "correctAnswer": "Pavé en verre",
+      "type": "multipleChoice",
+      "options": ["Pavé en verre", "Pavé en béton vieilli", "Pavé mosaïque"]
+    }
   ]
+
 }

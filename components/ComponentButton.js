@@ -34,6 +34,7 @@ export default function ComponentButton({ onAddLife, onSubtractLife }) {
     Cindy: false,
     Fred: false,
     Nicolas: false,
+    Thomas: false,
   });
 
   const playLifeGainAnimation = () => {
@@ -101,6 +102,8 @@ export default function ComponentButton({ onAddLife, onSubtractLife }) {
       videoFile = require("../assets/videos/lol9.mp4");
     } else if (character === "Nicolas") {
       videoFile = require("../assets/videos/lol8.mp4");
+    } else if (character === "Thomas") {
+      videoFile = require("../assets/videos/lol10.mp4");
     }
 
     setVideoSource(videoFile);
@@ -109,7 +112,7 @@ export default function ComponentButton({ onAddLife, onSubtractLife }) {
     scaleAnim.setValue(1);
     translateAnim.setValue(0);
 
-    if (character === "Fred" || character === "Nicolas") {
+    if (character === "Fred" || character === "Nicolas" || character === "Thomas") {
       const questionsForCharacter = questions[character.toLowerCase()];
       const randomIndex = Math.floor(Math.random() * questionsForCharacter.length);
       const selectedQuestion = questionsForCharacter[randomIndex];
@@ -263,6 +266,25 @@ export default function ComponentButton({ onAddLife, onSubtractLife }) {
           </TouchableOpacity>
           <Text style={styles.nameText}>Nicolas</Text>
         </View>
+
+        <View style={styles.buttonWrapper}>
+          <TouchableOpacity
+            style={styles.roundButton}
+            onPress={() => handleFirstButtonPress("Thomas")}
+            disabled={usedBonuses.Thomas}
+          >
+            <Image
+              source={
+                usedBonuses.Nicolas
+                  ? require("../images/ThomasBW.png")
+                  : require("../images/Thomas.png")
+              }
+              style={styles.avatar}
+            />
+          </TouchableOpacity>
+          <Text style={styles.nameText}>Thomas</Text>
+        </View>
+
       </View>
       {lifeGainTextVisible && (
         <Animated.Text
@@ -517,7 +539,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "red",  // Changer la couleur en rouge pour la perte de vie
   },
-  
+
   errorText: {
     color: "red",
     fontSize: 14,
