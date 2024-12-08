@@ -4,7 +4,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import Logo from './../assets/logo/tpopBlanc.svg';
 import LottieView from 'lottie-react-native'; // Importer Lottie
 
-
 export default function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
@@ -31,12 +30,13 @@ export default function HomeScreen({ navigation }) {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => navigation.navigate('Game')}
+                    activeOpacity={0.8}  // Ajuste l'opacité au moment de l'appui
                 >
                     <Text style={styles.buttonText}>Jouer</Text>
                     <FontAwesome name="arrow-right" size={20} marginTop="3" style={styles.arrowIcon} />
                 </TouchableOpacity>
                 <View style={styles.bottomMidCorner}>
-                    <View style={styles.halfCircle} />
+                    
                 </View>
             </View>
             <View style={styles.greenSection}>
@@ -113,36 +113,43 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         right: 0,
-        width: "45%",
-        height: "100%",
+        width: '45%',
+        height: '100%',
         backgroundColor: '#8ad09e',
         borderTopLeftRadius: 20,
         borderBottomLeftRadius: 20,
         overflow: 'hidden',
     },
-    halfCircle: {
-        position: 'absolute',
-        left: -30,
-        top: 0,
-        width: 90,
-        height: 95,
-        backgroundColor: '#fff7dd',
-        borderRadius: 50,
-    },
+    // halfCircle: {
+    //     position: 'absolute',
+    //     left: -30,
+    //     top: 0,
+    //     width: 90,
+    //     height: 95,
+    //     backgroundColor: '#fff7dd',
+    //     borderRadius: 50,
+    // },
 
     button: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 10,
-        borderRadius: 5,
-        marginRight: 70,
+        paddingVertical: 10, // Réduire le padding vertical si nécessaire
+        paddingHorizontal: 40,
+        backgroundColor: '#fff7dd',
+        borderRadius: 50,  // Bord arrondi pour l'effet de bouton doux
+        width: '50%',  // Le bouton prend la largeur complète du conteneur
+        height: '100%',
+        zIndex: 100,
     },
+    
     buttonText: {
         color: '#ec693d',
         fontFamily: 'Poppins-SemiBold',
         fontSize: 25,
-        paddingRight: 10,
+        zIndex: 1000,
+        textAlign: 'center',  // Centrer le texte horizontalement
+        marginRight: 10,
     },
     arrowIcon: {
         color: '#ec693d',
@@ -189,7 +196,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain', // Pour conserver les proportions du logo
         marginTop: -10, // Ajoutez ou ajustez la marge ici
         marginBottom: 0,
-
     },
     lottieAnimation: {
         width: 300, // Ajustez la taille selon vos besoins

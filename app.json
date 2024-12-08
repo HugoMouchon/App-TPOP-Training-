@@ -1,42 +1,42 @@
-{
-  "expo": {
-    "name": "TPOP Reco",
-    "slug": "TPOP_Reco",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/logo/iconeAppTest.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/logo/iconeAppTest.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#fff7dd"
-    },
-    "androidNavigationBar": {
-      "backgroundColor": "#fff7dd",
-      "barStyle": "light-content"
-    },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.hugomouchon.tpopgame"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/logo/iconeAppTest.png",
+  {
+    "expo": {
+      "name": "TPOP Reco",
+      "slug": "TPOP_Reco",
+      "version": "1.0.0",
+      "orientation": "portrait",
+      "icon": "./assets/logo/logo1.png",
+      "userInterfaceStyle": "light",
+      "newArchEnabled": true,
+      "splash": {
+        "image": "./assets/logo/logo2.png",
+        "resizeMode": "contain",
         "backgroundColor": "#fff7dd"
       },
-      "package": "com.hugomouchon.TPOP_Reco"
-    },
-    "web": {
-      "favicon": "./assets/logo/iconeAppTest.png"
-    },
-    "plugins": [
-      "expo-font"
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "60991cae-0a67-4a99-9409-55fb048732b0"
+      "androidNavigationBar": {
+        "backgroundColor": "#fff7dd",
+        "barStyle": "light-content"
+      },
+      "ios": {
+        "supportsTablet": true,
+        "bundleIdentifier": "com.hugomouchon.tpopgame"
+      },
+      "android": {
+        "adaptiveIcon": {
+          "foregroundImage": "./assets/logo/logo2.png",
+          "backgroundColor": "#fff7dd"
+        },
+        "package": "com.hugomouchon.TPOP_Reco"
+      },
+      "web": {
+        "favicon": "./assets/logo/logo2.png"
+      },
+      "plugins": [
+        "expo-font"
+      ],
+      "extra": {
+        "eas": {
+          "projectId": "60991cae-0a67-4a99-9409-55fb048732b0"
+        }
       }
     }
   }
-}

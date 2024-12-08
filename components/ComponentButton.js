@@ -135,6 +135,7 @@ export default function ComponentButton({ onAddLife, onSubtractLife }) {
     }));
 
     let videoFile;
+    let videoSpeed = 5;
     let imageForQuestion = null; // Variable pour l'image à afficher dans la question
 
     // Sélectionner la vidéo selon le personnage
@@ -438,7 +439,7 @@ export default function ComponentButton({ onAddLife, onSubtractLife }) {
           >
             <Video
               source={videoSource}
-              rate={1.0}
+              rate={1.1}
               volume={1.0}
               isMuted={false}
               resizeMode="cover"

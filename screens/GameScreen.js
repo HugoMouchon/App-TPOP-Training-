@@ -10,6 +10,7 @@ import LottieView from 'lottie-react-native';
 import { ProgressBar } from 'react-native-paper';
 import Animated, { withTiming, useSharedValue, useAnimatedStyle, opacity } from 'react-native-reanimated';
 import ComponentButton from '../components/ComponentButton';
+import { Keyboard } from 'react-native';
 
 
 
@@ -407,6 +408,9 @@ export default function GameScreen({ navigation }) {
     let newPointsVie = pointsVie;
     let correctPoints = 0;
 
+    // Ferme le clavier avant d'exécuter la logique
+    Keyboard.dismiss();
+
     if (!currentPlant || !currentPlant.nameBotanique || !currentPlant.nameVerniculaire) {
       console.error('currentPlant invalide :', currentPlant);
       return;
@@ -486,7 +490,7 @@ export default function GameScreen({ navigation }) {
       setNomVerniculaire('');
       updateImages();
       scrollViewRef.current?.scrollTo({ y: 0, animated: true });
-    }, 4000);
+    }, 6000);
   };
 
 
