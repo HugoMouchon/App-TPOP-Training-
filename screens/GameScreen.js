@@ -272,7 +272,7 @@ export default function GameScreen({ navigation }) {
   const [nomVerniculaire, setNomVerniculaire] = useState(''); // État pour l'input Nom Verniculaire
   const [showLottie, setShowLottie] = useState(false);
   const [animationType, setAnimationType] = useState(null); // Ajout de l'état pour le type d'animation
-  const [pointsVie, setPointsVie] = useState(40); // Points de vide l'utilisateur
+  const [pointsVie, setPointsVie] = useState(100); // Points de vide l'utilisateur
   const [goodAnswersPoints, setGoodAnswersPoints] = useState([]); // Tableau pour stocker les points des bonnes réponses
   const [isGameOver, setIsGameOver] = useState(false);
   const [playerName, setPlayerName] = useState('');
@@ -287,7 +287,7 @@ export default function GameScreen({ navigation }) {
 
     setPointsVie(prevPoints => {
       const validPrevPoints = Math.floor(prevPoints); // S'assurer que prevPoints est un entier
-      const newPoints = Math.min(validPrevPoints + 10, 40);
+      const newPoints = Math.min(validPrevPoints + 20, 100);
       console.log("Points de vie après ajout:", newPoints);
       return newPoints;
     });
@@ -298,7 +298,7 @@ export default function GameScreen({ navigation }) {
 
     setPointsVie(prevPoints => {
       const validPrevPoints = Math.floor(prevPoints); // S'assurer que prevPoints est un entier
-      const newPoints = Math.max(validPrevPoints - 10, 0); // Ne pas descendre en dessous de 0
+      const newPoints = Math.max(validPrevPoints - 20, 0); // Ne pas descendre en dessous de 0
       console.log("Points de vie après retrait:", newPoints);
       return newPoints;
     });
@@ -401,11 +401,16 @@ export default function GameScreen({ navigation }) {
 
   const handleNextPlant = () => {
     const currentPlant = vegetaux[currentPlantIndex];
-    const botaniquePoints = 3; // Valeur dynamique pour botanique
-    const vernaculairePoints = 1; // Valeur dynamique pour vernaculaire
+    const botaniquePoints = 10; // Valeur dynamique pour botanique
+    const vernaculairePoints = 10; // Valeur dynamique pour vernaculaire
 
     let newPointsVie = pointsVie;
     let correctPoints = 0;
+
+    if (!currentPlant || !currentPlant.nameBotanique || !currentPlant.nameVerniculaire) {
+      console.error('currentPlant invalide :', currentPlant);
+      return;
+    }
 
     // Vérification des réponses
     if (nomBotanique.trim().toLowerCase() === currentPlant.nameBotanique.toLowerCase()) {
@@ -420,7 +425,7 @@ export default function GameScreen({ navigation }) {
       newPointsVie -= vernaculairePoints;
     }
 
-    let updatedPointsVie = Math.max(0, Math.min(40, Math.floor(newPointsVie))); // Assurez-vous d'utiliser Math.floor ici
+    let updatedPointsVie = Math.max(0, Math.min(100, Math.floor(newPointsVie))); // Assurez-vous d'utiliser Math.floor ici
     setPointsVie(updatedPointsVie);
 
     // Si les points de vie tombent à 0, le jeu est terminé
@@ -486,8 +491,9 @@ export default function GameScreen({ navigation }) {
 
 
 
-
   useEffect(() => {
+    console.log('foundPlants:', foundPlants.length);
+    console.log('vegetaux.length:', vegetaux.length);
     if (foundPlants.length === vegetaux.length) {
       setIsGameOver(true);
       setShowWinnerLottie(true);  // Affiche l'animation de victoire
@@ -510,6 +516,9 @@ export default function GameScreen({ navigation }) {
   }, [visible]);
 
 
+  // useEffect(() => {
+  //   setFoundPlants(vegetaux.map((_, index) => index)); // Simule que tous les végétaux sont trouvés
+  // }, []);
 
   return (
     <KeyboardAvoidingView
@@ -602,11 +611,11 @@ export default function GameScreen({ navigation }) {
               <View style={styles.containerProgressBar}>
                 <FontAwesome name="heart" size={17} marginRight="3" color={'#b00224'} />
                 <ProgressBar
-                  progress={pointsVie / 40} // Ex: Si pointsVie = 20, cela donne 0.5
-                  color={pointsVie > 20 ? '#4CAF50' : pointsVie > 10 ? '#FF9800' : '#F44336'}
+                  progress={pointsVie / 100} // Ex: Si pointsVie = 20, cela donne 0.5
+                  color={pointsVie > 50 ? '#4CAF50' : pointsVie > 20 ? '#FF9800' : '#F44336'}
                   style={styles.progressBar}
                 />
-                <Text style={styles.pointsText}>{pointsVie}/40</Text> {/* Affichage du texte */}
+                <Text style={styles.pointsText}>{pointsVie}/100</Text> {/* Affichage du texte */}
               </View>
               <ComponentButton
                 onAddLife={addLifePoints}
@@ -634,14 +643,6 @@ export default function GameScreen({ navigation }) {
               )}
             </View>
 
-            {/* <TouchableOpacity onPress={() => {
-              console.log('Bouton cliqué'); // Ajoute un log pour vérifier
-              setShowWinnerLottie(true);
-            }}>
-              <Text>Tester l'animation Winner</Text>
-            </TouchableOpacity> */}
-
-            {/* ImageView */}
             <ImageView
               images={images.slice(-3)}  // Seulement les 3 dernières images
               imageIndex={selectedImageIndex}  // Index de l'image actuellement ouverte
@@ -680,6 +681,45 @@ export default function GameScreen({ navigation }) {
             <TouchableOpacity style={styles.nextButton} onPress={handleNextPlant}>
               <Text style={styles.nextButtonText}>Valider</Text>
             </TouchableOpacity>
+
+            <Modal
+              animationType="fade"
+              transparent={true}
+              visible={showWinnerLottie}
+              onRequestClose={() => setShowWinnerLottie(false)}
+            >
+              <View style={styles.modalContainerWinner}>
+                <LottieView
+                  source={require('./../assets/lottie/Winner2.json')}
+                  autoPlay
+                  loop={true}
+                  style={styles.lottieAnimation}
+                />
+                <View style={styles.textContainerWinner}>
+                  <Text style={styles.textWinner}>Félicitations, vous avez trouvé tous les végétaux ainsi que tous les parasites !</Text>
+                </View>
+                <View style={styles.inputGroup}>
+                  <TextInput
+                    placeholder="Entrez votre nom"
+                    value={playerName}
+                    onChangeText={setPlayerName}
+                    style={styles.nameInput}
+                    placeholderTextColor="#fff"
+                    textColor="#fff"
+                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      console.log(playerName); // Ajouter un log pour voir ce qui est entré
+                      navigation.navigate('Scores', { points: totalPoints, playerName });
+                    }}
+                    style={styles.submitButton}
+                  >
+                    <Text style={[styles.submitButtonText, { color: '#fff' }]}>Confirmer</Text>
+                  </TouchableOpacity>
+
+                </View>
+              </View>
+            </Modal>
 
             <Modal
               animationType="fade"
@@ -731,16 +771,6 @@ export default function GameScreen({ navigation }) {
                   />
                 )}
 
-                {/* Animation Winner (Quand tous les végétaux sont trouvés) */}
-                {/* {showWinnerLottie && (
-                  <LottieView
-                    source={require('./../assets/lottie/Winner.json')}
-                    autoPlay
-                    loop={false}
-                    style={styles.lottieAnimation}
-                  />
-                )} */}
-
                 <Text style={styles.textValidation}>
                   {isGameOver
                     ? ''
@@ -787,6 +817,7 @@ export default function GameScreen({ navigation }) {
                     >
                       <Text style={[styles.submitButtonText, { color: '#fff' }]}>Confirmer</Text>
                     </TouchableOpacity>
+
                   </View>
                 )}
               </View>
@@ -996,7 +1027,7 @@ const styles = StyleSheet.create({
 
   nextButton: {
     backgroundColor: '#1a776d',
-    padding: 10, 
+    padding: 10,
     marginTop: 5,
     marginBottom: 15,
     alignItems: 'center',
@@ -1016,7 +1047,6 @@ const styles = StyleSheet.create({
     color: '#fff7dd',
     fontSize: 25,
     marginBottom: 10,
-
   },
 
   correctAnswersContainer: {
@@ -1031,5 +1061,23 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     fontWeight: 'bold',
   },
+  modalContainerWinner: {
+    flex: 1,
+    justifyContent: 'center',  // Centrer l'animation et le texte
+    alignItems: 'center',
+    backgroundColor: '#fff7dd',  // Fond semi-transparent pour le modal
+  },
 
+  textContainerWinner: {
+    fontFamily: 'Poppins-Bold',
+    fontWeight: 'bold',
+    color: '#fff7dd',
+    padding: 10,
+    marginBottom: 20,
+  },
+  textWinner: {
+    fontSize: 22,
+    color: '#145952',  // Couleur du texte
+    textAlign: 'center',
+  },
 });
